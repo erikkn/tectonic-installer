@@ -383,7 +383,7 @@ def runRSpecTest(testFilePath, dockerArgs) {
                 unstash 'smoke-test-binary'
                 sh """#!/bin/bash -ex
                   cd tests/rspec
-                  bundler exec rspec ${testFilePath}
+                  bundler exec rspec ${testFilePath} --format documentation
                 """
               }
           }
@@ -413,7 +413,6 @@ def printLogstashAttributes() {
     echo  "Build_Number=" + env.BUILD_NUMBER
     echo  "JOB_NAME=" + env.JOB_NAME
     echo  "USER_REQUEST=" +  env.CHANGE_AUTHOR
-    echo  "Build_Status=" + env.BUILD_STATUS
     echo  "GIT_TARGET_BRANCH=" + env.CHANGE_TARGET
     echo  "GIT_PR_NUMBER=" + env.CHANGE_ID
 }
