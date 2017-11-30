@@ -19,7 +19,7 @@ RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee 
     apt-get install --no-install-recommends -y -q \
     google-cloud-sdk
 
-RUN cd /tmp/app && gem install bundler -v ${BUNDLER_VERSION} && bundle install && rm -r /tmp/app
+RUN cd /tmp/app && gem update bundler &&  gem install bundler -v ${BUNDLER_VERSION} && bundle &&  bundle install && rm -r /tmp/app
 
 # Install kubectl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
